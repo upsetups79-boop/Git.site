@@ -18,7 +18,7 @@
         h1 { margin-bottom: 10px; color: #a855f7; font-size: 36px; }
         p.subtitle { color: #94a3b8; margin-bottom: 40px; font-size: 18px; }
 
-        /* --- 2. ESTILO DOS FILTROS (SEU CÓDIGO) --- */
+        /* --- ESTILO DOS FILTROS --- */
         .filtros {
             display: flex;
             justify-content: center;
@@ -31,7 +31,7 @@
             border: 1px solid #334155;
             color: #cbd5f5;
             padding: 10px 20px;
-            border-radius: 999px; /* Borda redonda estilo pílula */
+            border-radius: 999px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: 500;
@@ -55,9 +55,9 @@
         }
 
         .card {
-            display: flex; /* Importante para o script funcionar bem */
+            display: flex;
             align-items: center;
-            justify-content: center; /* Centraliza o texto */
+            justify-content: center;
             width: 100%;
             padding: 22px;
             background-color: #1e293b;
@@ -75,6 +75,12 @@
             background-color: #2d3748; 
             border-color: #a855f7; 
         }
+        
+        /* Estilo especial para o botão de WhatsApp (opcional, deixa ele verdinho ao passar o mouse) */
+        .card.whatsapp:hover {
+            border-color: #25D366;
+            color: #25D366;
+        }
     </style>
 </head>
 <body>
@@ -88,6 +94,7 @@
         <button class="filtro" data-filter="app">📱 Apps</button>
         <button class="filtro" data-filter="pdf">📄 PDFs</button>
         <button class="filtro" data-filter="template">🎨 Templates</button>
+        <button class="filtro" data-filter="contato">💬 Contato</button>
     </div>
 
     <div class="container-cards">
@@ -104,7 +111,13 @@
         <a href="#" class="card" data-category="template">🎨 Pack de Templates Canva</a>
         <a href="#" class="card" data-category="pdf">📄 Cardápio Digital (PDF)</a>
         <a href="#" class="card" data-category="ebook">📘 E-book Marketing</a>
-        <a href="#" class="card" data-category="contato whatsapp">
+
+        <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20seu%20portfólio." 
+           class="card whatsapp" 
+           data-category="contato"
+           target="_blank">
+           💬 Me chame no WhatsApp
+        </a>
 
     </div>
 
@@ -114,18 +127,14 @@
 
         filtros.forEach(botao => {
             botao.addEventListener("click", () => {
-                // Remove a classe 'ativo' de todos e adiciona no clicado
                 filtros.forEach(b => b.classList.remove("ativo"));
                 botao.classList.add("ativo");
 
                 const filtro = botao.dataset.filter;
 
                 cards.forEach(card => {
-                    // Se for 'all' ou se a categoria bater, mostra. Senão, esconde.
                     if (filtro === "all" || card.dataset.category === filtro) {
-                        card.style.display = "flex"; // Mantém o layout flex
-                        
-                        // Uma animaçãozinha suave ao aparecer
+                        card.style.display = "flex";
                         card.style.opacity = "0";
                         setTimeout(() => card.style.opacity = "1", 50);
                     } else {
@@ -138,5 +147,3 @@
 
 </body>
 </html>
-
-
