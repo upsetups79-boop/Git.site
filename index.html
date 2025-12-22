@@ -3,169 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio</title>
+    <title>Portfólio | DLabs</title>
     <style>
-        /* --- ESTILOS GERAIS --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #0b1120; color: white; min-height: 100vh; }
-
-        /* --- ESTILO DO TOPO (HERO) --- */
-        .hero-section {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            background: radial-gradient(circle at center, #1e293b 0%, #0b1120 70%);
-        }
-        .tag-inicial {
-            background-color: rgba(168, 85, 247, 0.1);
-            color: #a855f7;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: inline-block;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        .titulo-principal {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .descricao-hero {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        /* --- ESTILO DOS TRABALHOS --- */
-        .secao-portfolio {
-            width: 100%;
-            max-width: 1200px;
-            padding: 80px 20px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        h2.titulo-secao { font-size: 2.5rem; margin-bottom: 10px; }
-        .subtitulo { color: #94a3b8; margin-bottom: 50px; font-size: 1.1rem; }
+        body { font-family: Arial, sans-serif; background-color: #0b1120; color: white; text-align: center; padding: 40px; }
         
-        .container-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
+        /* --- NOVO ESTILO PARA A LOGO --- */
+        .logo-topo {
+            width: 200px; /* Tamanho da logo. Aumente ou diminua se quiser */
+            height: auto;
+            margin-bottom: 30px; /* Espaço embaixo da logo */
         }
+        /* ------------------------------- */
 
-        /* CONFIGURAÇÃO DOS CARDS COMO BOTÕES */
+        .container { max-width: 600px; margin: 0 auto; }
+        
+        /* Estilo dos Botões */
         .card {
-            width: 300px;
-            height: 140px;
+            display: block;
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 20px;
             background-color: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: transform 0.3s, border-color 0.3s;
-            color: #e2e8f0;
-            text-decoration: none; 
-            position: relative;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #a855f7;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            background-color: #263346;
             color: white;
-        }
-
-        /* --- BOTÃO WHATSAPP --- */
-        .area-contato {
-            margin-top: 80px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        .btn-roxo {
-            background-color: #a855f7;
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
             text-decoration: none;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            font-size: 18px;
             font-weight: bold;
-            font-size: 1rem;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
             transition: transform 0.2s;
         }
-        .btn-roxo:hover { transform: scale(1.05); }
-
-        footer {
-            margin-top: 60px;
-            padding: 40px;
-            color: #64748b;
-            font-size: 0.9rem;
-            border-top: 1px solid #1e293b;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .titulo-principal { font-size: 2.5rem; }
-            .hero-section { height: auto; padding: 100px 20px; }
-        }
+        .card:hover { transform: scale(1.02); background-color: #2d3748; border-color: #a855f7; }
     </style>
 </head>
 <body>
 
-    <header class="hero-section">
-        <span class="tag-inicial">🚀 Inovação & Tecnologia</span>
+    <div class="container">
         
-        <h1 class="titulo-principal">
-             <br> 
-            Soluções Digitais e Projetos
-        </h1>
-        
-        <p class="descricao-hero">Especialista em Desenvolvimento de Apps, Edição de Vídeo Profissional e Automação de Sistemas.</p>
-        <div style="color: #64748b; font-size: 0.9rem; margin-top: 20px;">▼ Ver Projetos</div>
-    </header>
+        <img src="logo.png" alt="Logo DLabs" class="logo-topo">
 
-    <section class="secao-portfolio">
-        <h2 class="titulo-secao">Trabalhos Recentes</h2>
-        <p class="subtitulo">Veja um pouco do que já produzi:</p>
+        <p style="color: #94a3b8; margin-bottom: 30px;">Confira meus projetos abaixo:</p>
 
-        <div class="container-cards">
-            <a href="#" class="card">📱 App Gestão (Flutter)</a>
-            <a href="#" class="card">🎬 Edição de Vídeo</a>
-            <a href="#" class="card">⚙️ Automação</a>
-            <a href="#" class="card">🎨 Pack de Templates</a>
-            <a href="#" class="card">📄 Cardápio Digital (PDF)</a>
-        </div>
+        <a href="https://drive.google.com/drive/folders/131ePsbbQYnB_Xk30geEGVfSDUqqPzZzq?usp=drive_link" class="card" target="_blank">
+            🎬 Ver Meus Vídeos
+        </a>
 
-        <div class="area-contato">
-            <p>Pronto para elevar o nível do seu projeto?</p>
-            
-            <a href="https://wa.me/5534991475082?text=Olá!%20Vi%20seu%20portfólio." class="btn-roxo" target="_blank">
-                Me chame agora
-            </a>
+        <a href="#" class="card">
+            📸 Ver Minhas Fotos
+        </a>
 
-        </div>
-    </section>
-
-    <footer><p>© 2025 Todos os direitos reservados.</p></footer>
+        <a href="#" class="card">
+            📱 Ver Meus Apps
+        </a>
+    </div>
 
 </body>
 </html>
-
