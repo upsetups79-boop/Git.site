@@ -3,33 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio | DLabs</title>
+    <title>Portfólio Profissional</title>
     <style>
         body { 
-            font-family: Arial, sans-serif; 
-            background-color: #0b1120; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #0f172a; 
             color: white; 
             text-align: center; 
             padding: 40px; 
-        }
-        
-        .container { max-width: 600px; margin: 0 auto; }
-        
-        /* Estilo do Título (que voltou!) */
-        h1 { 
-            margin-bottom: 10px; 
-            color: #a855f7; /* Cor roxa neon */
-            font-size: 32px;
+            margin: 0;
         }
 
-        p { color: #94a3b8; margin-bottom: 40px; }
-        
-        /* Estilo dos Botões */
+        /* --- TÍTULO E SUBTÍTULO --- */
+        h1 { margin-bottom: 10px; color: #a855f7; font-size: 36px; }
+        p.subtitle { color: #94a3b8; margin-bottom: 40px; font-size: 18px; }
+
+        /* --- 2. ESTILO DOS FILTROS (SEU CÓDIGO) --- */
+        .filtros {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .filtro {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: #cbd5f5;
+            padding: 10px 20px;
+            border-radius: 999px; /* Borda redonda estilo pílula */
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .filtro:hover, .filtro.ativo {
+            background-color: #a855f7;
+            color: white;
+            border-color: #a855f7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        }
+
+        /* --- ESTILO DOS CARDS --- */
+        .container-cards { 
+            max-width: 700px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+        }
+
         .card {
-            display: block;
+            display: flex; /* Importante para o script funcionar bem */
+            align-items: center;
+            justify-content: center; /* Centraliza o texto */
             width: 100%;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 22px;
             background-color: #1e293b;
             color: white;
             text-decoration: none;
@@ -37,31 +67,73 @@
             border-radius: 12px;
             font-size: 18px;
             font-weight: bold;
-            transition: transform 0.2s;
-            box-sizing: border-box; /* Garante que o botão não estoure a tela */
+            transition: all 0.3s ease;
+            box-sizing: border-box;
         }
-        .card:hover { transform: scale(1.02); background-color: #2d3748; border-color: #a855f7; }
+        .card:hover { 
+            transform: scale(1.02); 
+            background-color: #2d3748; 
+            border-color: #a855f7; 
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <h1>Meu Portfólio 🚀</h1>
-        <p>Confira meus projetos abaixo:</p>
+    <h1>Meus Projetos 🚀</h1>
+    <p class="subtitle">Selecione uma categoria para filtrar:</p>
 
-        <a href="https://drive.google.com/drive/folders/131ePsbbQYnB_Xk30geEGVfSDUqqPzZzq?usp=drive_link" class="card" target="_blank">
-            🎬 Ver Meus Vídeos
-        </a>
-
-        <a href="#" class="card">
-            📸 Ver Minhas Fotos
-        </a>
-
-        <a href="#" class="card">
-            📱 Ver Meus Apps
-        </a>
+    <div class="filtros">
+        <button class="filtro ativo" data-filter="all">Todos</button>
+        <button class="filtro" data-filter="video">🎬 Vídeos</button>
+        <button class="filtro" data-filter="app">📱 Apps</button>
+        <button class="filtro" data-filter="pdf">📄 PDFs</button>
+        <button class="filtro" data-filter="template">🎨 Templates</button>
     </div>
+
+    <div class="container-cards">
+        
+        <a href="https://drive.google.com/drive/folders/131ePsbbQYnB_Xk30geEGVfSDUqqPzZzq?usp=drive_link"
+           class="card"
+           data-category="video"
+           target="_blank">
+           🎬 Edição de Vídeo (Drive)
+        </a>
+
+        <a href="#" class="card" data-category="app">📱 App Gestão (Flutter)</a>
+        <a href="#" class="card" data-category="app">⚙️ Automação Python</a>
+        <a href="#" class="card" data-category="template">🎨 Pack de Templates Canva</a>
+        <a href="#" class="card" data-category="pdf">📄 Cardápio Digital (PDF)</a>
+        <a href="#" class="card" data-category="ebook">📘 E-book Marketing</a>
+
+    </div>
+
+    <script>
+        const filtros = document.querySelectorAll(".filtro");
+        const cards = document.querySelectorAll(".card");
+
+        filtros.forEach(botao => {
+            botao.addEventListener("click", () => {
+                // Remove a classe 'ativo' de todos e adiciona no clicado
+                filtros.forEach(b => b.classList.remove("ativo"));
+                botao.classList.add("ativo");
+
+                const filtro = botao.dataset.filter;
+
+                cards.forEach(card => {
+                    // Se for 'all' ou se a categoria bater, mostra. Senão, esconde.
+                    if (filtro === "all" || card.dataset.category === filtro) {
+                        card.style.display = "flex"; // Mantém o layout flex
+                        
+                        // Uma animaçãozinha suave ao aparecer
+                        card.style.opacity = "0";
+                        setTimeout(() => card.style.opacity = "1", 50);
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
