@@ -5,21 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio | DLabs</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #0b1120; color: white; text-align: center; padding: 40px; }
-        
-        /* --- NOVO ESTILO CORRIGIDO --- */
-        .logo-topo {
-            width: 80%;       /* Ocupa 80% da largura da tela */
-            max-width: 500px; /* Mas não passa de 500px (para não ficar enorme) */
-            height: auto;     /* Mantém a proporção correta */
-            margin-bottom: 30px;
-            display: block;   /* Garante que ela se comporte como um bloco */
-            margin-left: auto;  /* Centraliza automaticamente */
-            margin-right: auto; /* Centraliza automaticamente */
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #0b1120; 
+            color: white; 
+            text-align: center; 
+            padding: 40px; 
         }
-        /* ----------------------------- */
-
+        
         .container { max-width: 600px; margin: 0 auto; }
+        
+        /* Estilo do Título (que voltou!) */
+        h1 { 
+            margin-bottom: 10px; 
+            color: #a855f7; /* Cor roxa neon */
+            font-size: 32px;
+        }
+
+        p { color: #94a3b8; margin-bottom: 40px; }
         
         /* Estilo dos Botões */
         .card {
@@ -35,6 +38,7 @@
             font-size: 18px;
             font-weight: bold;
             transition: transform 0.2s;
+            box-sizing: border-box; /* Garante que o botão não estoure a tela */
         }
         .card:hover { transform: scale(1.02); background-color: #2d3748; border-color: #a855f7; }
     </style>
@@ -43,11 +47,10 @@
 
     <div class="container">
         
-        <img src="619b6a9f-3cc4-4599-9bb7-d1541d324b15.jpg" alt="Logo DLabs" class="logo-topo">
+        <h1>Meu Portfólio 🚀</h1>
+        <p>Confira meus projetos abaixo:</p>
 
-        <p style="color: #94a3b8; margin-bottom: 30px;">Confira meus projetos abaixo:</p>
-
-        <a href="https://drive.google.com/drive/folders/1dHDihhEBIlrRpX5p3MspgDIcSnB-bsFt?usp=drive_link" class="card" target="_blank">
+        <a href="https://drive.google.com/drive/folders/131ePsbbQYnB_Xk30geEGVfSDUqqPzZzq?usp=drive_link" class="card" target="_blank">
             🎬 Ver Meus Vídeos
         </a>
 
@@ -62,10 +65,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
