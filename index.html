@@ -3,20 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Profissional</title>
+    <title>Portfólio Profissional | D.Labs</title>
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             background-color: #0f172a; 
             color: white; 
             text-align: center; 
-            padding: 40px; 
+            padding: 40px 20px;
             margin: 0;
+            position: relative; /* Necessário para o efeito de fundo */
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- O SEGREDO: A LOGO INTEGRADA NO FUNDO --- */
+        .logo-background {
+            position: fixed; /* Fica parada enquanto a página rola */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centraliza perfeitamente */
+            width: 90%;      /* Ocupa quase toda a largura */
+            max-width: 600px; /* Limite para não ficar exagerado no PC */
+            opacity: 0.15;   /* Transparência (Mude aqui se quiser mais forte/fraco) */
+            z-index: -1;     /* Joga para trás de tudo */
+            pointer-events: none; /* Garante que não atrapalhe os cliques */
+            
+            /* Truque de Mestre: Mistura a imagem com a cor do fundo */
+            mix-blend-mode: screen; 
+            filter: blur(2px); /* Um leve desfoque para parecer fumaça/luz */
         }
 
         /* --- TÍTULO E SUBTÍTULO --- */
-        h1 { margin-bottom: 10px; color: #a855f7; font-size: 36px; }
-        p.subtitle { color: #94a3b8; margin-bottom: 40px; font-size: 18px; }
+        /* Adicionei uma sombra no texto para ele não sumir em cima da logo */
+        h1 { 
+            margin-bottom: 10px; 
+            color: #a855f7; 
+            font-size: 38px; 
+            margin-top: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+        
+        p.subtitle { 
+            color: #cbd5f5; 
+            margin-bottom: 40px; 
+            font-size: 18px;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+        }
 
         /* --- ESTILO DOS FILTROS --- */
         .filtros {
@@ -25,17 +58,19 @@
             gap: 12px;
             flex-wrap: wrap;
             margin-bottom: 40px;
+            position: relative; /* Garante que fique acima da logo */
         }
         .filtro {
-            background-color: #1e293b;
+            background-color: rgba(30, 41, 59, 0.9); /* Leve transparência no fundo do botão */
             border: 1px solid #334155;
             color: #cbd5f5;
             padding: 10px 20px;
             border-radius: 999px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
             transition: all 0.3s;
+            backdrop-filter: blur(5px); /* Efeito vidro fosco */
         }
         .filtro:hover, .filtro.ativo {
             background-color: #a855f7;
@@ -52,6 +87,7 @@
             display: flex; 
             flex-direction: column; 
             gap: 15px; 
+            position: relative;
         }
 
         .card {
@@ -60,7 +96,8 @@
             justify-content: center;
             width: 100%;
             padding: 22px;
-            background-color: #1e293b;
+            /* Fundo semitransparente para dar efeito vidro */
+            background-color: rgba(30, 41, 59, 0.85); 
             color: white;
             text-decoration: none;
             border: 1px solid #334155;
@@ -69,21 +106,21 @@
             font-weight: bold;
             transition: all 0.3s ease;
             box-sizing: border-box;
+            backdrop-filter: blur(5px); /* Desfoque atrás do botão */
         }
         .card:hover { 
             transform: scale(1.02); 
-            background-color: #2d3748; 
+            background-color: rgba(45, 55, 72, 0.95); 
             border-color: #a855f7; 
         }
         
-        /* Estilo especial para o botão de WhatsApp (opcional, deixa ele verdinho ao passar o mouse) */
-        .card.whatsapp:hover {
-            border-color: #25D366;
-            color: #25D366;
-        }
+        /* Estilo do WhatsApp */
+        .card.whatsapp:hover { border-color: #25D366; color: #25D366; }
     </style>
 </head>
 <body>
+
+    <img src="logo-neon.jpg" alt="Background Logo" class="logo-background">
 
     <h1>D.Labs Soluções Digitais 🚀</h1>
     <p class="subtitle">Selecione uma categoria para filtrar:</p>
@@ -129,7 +166,6 @@
             botao.addEventListener("click", () => {
                 filtros.forEach(b => b.classList.remove("ativo"));
                 botao.classList.add("ativo");
-
                 const filtro = botao.dataset.filter;
 
                 cards.forEach(card => {
